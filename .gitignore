@@ -1,0 +1,13 @@
+node_modules
+.env*
+!.env.example
+data/
+artifacts/
+.eve
+.vercel
+.next
+.output
+.nitro
+dist
+.DS_Store
+*.tsbuildinfo
