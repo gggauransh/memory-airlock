@@ -1,0 +1,518 @@
+{
+  "ranAt": "2026-10-16T15:27:02.359Z",
+  "backend": "falkordb",
+  "model": "ollama/qwen3:0.6b",
+  "staleBlocked": true,
+  "unchangedShippingDraft": {
+    "text": "Shipping to Germany is not verified in shared memory. Confirm with the policy owner before promising delivery.",
+    "runId": "run-c1233641-7bb",
+    "revision": 4,
+    "citations": [
+      "fact-france",
+      "fact-uae"
+    ],
+    "note": "Current at this revision. Recheck after policy updates. Not sent."
+  },
+  "returns": {
+    "run": {
+      "id": "run-8569225e-107",
+      "caseId": "case-90b44666-461",
+      "request": {
+        "question": "Check whether this purchase is within the current standard return window.",
+        "days": 20,
+        "destination": "Germany",
+        "topics": [
+          "returns"
+        ],
+        "claim": "outside_window"
+      },
+      "question": "Check whether this purchase is within the current standard return window.",
+      "mode": "model",
+      "orchestration": "server-evidence",
+      "model": "ollama/qwen3:0.6b",
+      "basedOnRevision": 0,
+      "createdAt": "2026-10-16T15:26:52.949Z",
+      "durationMs": 2982,
+      "decisionIds": [
+        "decision-765a9376-0fa",
+        "decision-e0c0d6a3-e3b",
+        "decision-9a63404c-b73"
+      ],
+      "traces": [
+        {
+          "agentId": "team-analyst:case-90b44666-461",
+          "tool": "read_returns_policy",
+          "revision": 0,
+          "factIds": [
+            "fact-refund"
+          ],
+          "decisionIds": [],
+          "watchedRelations": [
+            "refund_days"
+          ],
+          "durationMs": 161
+        },
+        {
+          "agentId": "team-reviewer:case-90b44666-461",
+          "tool": "review_handoff",
+          "revision": 0,
+          "factIds": [],
+          "decisionIds": [
+            "decision-765a9376-0fa"
+          ],
+          "durationMs": 0
+        },
+        {
+          "agentId": "team-writer:case-90b44666-461",
+          "tool": "read_reviewed_handoff",
+          "revision": 0,
+          "factIds": [],
+          "decisionIds": [
+            "decision-e0c0d6a3-e3b"
+          ],
+          "durationMs": 0
+        }
+      ],
+      "inputTokens": 847,
+      "outputTokens": 151
+    },
+    "decisions": [
+      {
+        "id": "decision-765a9376-0fa",
+        "agentId": "team-analyst:case-90b44666-461",
+        "text": "A 20-day-old purchase is within the current 30-day standard return window.",
+        "factIds": [
+          "fact-refund"
+        ],
+        "decisionIds": [],
+        "watches": [
+          "refund_days"
+        ],
+        "runId": "run-8569225e-107",
+        "origin": "model",
+        "citations": [
+          "fact-refund"
+        ],
+        "assessments": [
+          {
+            "topic": "returns",
+            "outcome": "within_window"
+          }
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:54.219Z"
+      },
+      {
+        "id": "decision-e0c0d6a3-e3b",
+        "agentId": "team-reviewer:case-90b44666-461",
+        "text": "A 20-day-old purchase is within the current 30-day standard return window.",
+        "factIds": [],
+        "decisionIds": [
+          "decision-765a9376-0fa"
+        ],
+        "watches": [],
+        "runId": "run-8569225e-107",
+        "origin": "model",
+        "citations": [
+          "fact-refund"
+        ],
+        "assessments": [
+          {
+            "topic": "returns",
+            "outcome": "within_window"
+          }
+        ],
+        "corrections": [
+          "Customer claims outside_window; verified current policy says within_window. Customer claims cannot override policy."
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:54.926Z"
+      },
+      {
+        "id": "decision-9a63404c-b73",
+        "agentId": "team-writer:case-90b44666-461",
+        "text": "A 20-day-old purchase is within the current 30-day standard return window.",
+        "factIds": [],
+        "decisionIds": [
+          "decision-e0c0d6a3-e3b"
+        ],
+        "watches": [],
+        "runId": "run-8569225e-107",
+        "origin": "model",
+        "citations": [
+          "fact-refund"
+        ],
+        "assessments": [
+          {
+            "topic": "returns",
+            "outcome": "within_window"
+          }
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:55.867Z"
+      }
+    ],
+    "revision": 1,
+    "note": "Live model inference; tools, structured outcomes, citation IDs and revision checked. Prose can be wrong. Draft not sent."
+  },
+  "shipping": {
+    "run": {
+      "id": "run-c1233641-7bb",
+      "caseId": "case-4115efef-7aa",
+      "request": {
+        "question": "Is delivery to Germany supported by current verified policy?",
+        "days": 20,
+        "destination": "Germany",
+        "topics": [
+          "shipping"
+        ]
+      },
+      "question": "Is delivery to Germany supported by current verified policy?",
+      "mode": "model",
+      "orchestration": "server-evidence",
+      "model": "ollama/qwen3:0.6b",
+      "basedOnRevision": 1,
+      "createdAt": "2026-10-16T15:26:56.063Z",
+      "durationMs": 2739,
+      "decisionIds": [
+        "decision-09a25592-95e",
+        "decision-b9b05eda-358",
+        "decision-4573dc76-9b7"
+      ],
+      "traces": [
+        {
+          "agentId": "team-analyst:case-4115efef-7aa",
+          "tool": "read_shipping_policy",
+          "revision": 1,
+          "factIds": [
+            "fact-france",
+            "fact-uae"
+          ],
+          "decisionIds": [],
+          "watchedRelations": [
+            "ships_to"
+          ],
+          "durationMs": 160
+        },
+        {
+          "agentId": "team-reviewer:case-4115efef-7aa",
+          "tool": "review_handoff",
+          "revision": 1,
+          "factIds": [],
+          "decisionIds": [
+            "decision-09a25592-95e"
+          ],
+          "durationMs": 0
+        },
+        {
+          "agentId": "team-writer:case-4115efef-7aa",
+          "tool": "read_reviewed_handoff",
+          "revision": 1,
+          "factIds": [],
+          "decisionIds": [
+            "decision-b9b05eda-358"
+          ],
+          "durationMs": 0
+        }
+      ],
+      "inputTokens": 971,
+      "outputTokens": 163
+    },
+    "decisions": [
+      {
+        "id": "decision-09a25592-95e",
+        "agentId": "team-analyst:case-4115efef-7aa",
+        "text": "Shipping to Germany is not verified in shared memory. Confirm with the policy owner before promising delivery.",
+        "factIds": [
+          "fact-france",
+          "fact-uae"
+        ],
+        "decisionIds": [],
+        "watches": [
+          "ships_to"
+        ],
+        "runId": "run-c1233641-7bb",
+        "origin": "model",
+        "citations": [
+          "fact-france",
+          "fact-uae"
+        ],
+        "assessments": [
+          {
+            "topic": "shipping",
+            "outcome": "needs_confirmation"
+          }
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:57.126Z"
+      },
+      {
+        "id": "decision-b9b05eda-358",
+        "agentId": "team-reviewer:case-4115efef-7aa",
+        "text": "Shipping to Germany is not verified in shared memory. Confirm with the policy owner before promising delivery.",
+        "factIds": [],
+        "decisionIds": [
+          "decision-09a25592-95e"
+        ],
+        "watches": [],
+        "runId": "run-c1233641-7bb",
+        "origin": "model",
+        "citations": [
+          "fact-france",
+          "fact-uae"
+        ],
+        "assessments": [
+          {
+            "topic": "shipping",
+            "outcome": "needs_confirmation"
+          }
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:57.807Z"
+      },
+      {
+        "id": "decision-4573dc76-9b7",
+        "agentId": "team-writer:case-4115efef-7aa",
+        "text": "Shipping to Germany is not verified in shared memory. Confirm with the policy owner before promising delivery.",
+        "factIds": [],
+        "decisionIds": [
+          "decision-b9b05eda-358"
+        ],
+        "watches": [],
+        "runId": "run-c1233641-7bb",
+        "origin": "model",
+        "citations": [
+          "fact-france",
+          "fact-uae"
+        ],
+        "assessments": [
+          {
+            "topic": "shipping",
+            "outcome": "needs_confirmation"
+          }
+        ],
+        "status": "current",
+        "createdAt": "2026-10-16T15:26:58.736Z"
+      }
+    ],
+    "revision": 2,
+    "note": "Live model inference; tools, structured outcomes, citation IDs and revision checked. Prose can be wrong. Draft not sent."
+  },
+  "preview": {
+    "id": "preview-73b63732-d5f",
+    "revision": 2,
+    "createdAt": "2026-10-16T15:26:58.987Z",
+    "expiresAt": "2026-10-16T15:41:58.987Z",
+    "update": {
+      "relation": "refund_days",
+      "value": "14",
+      "source": "policy",
+      "evidence": "Synthetic policy owner confirms a 14-day standard return window.",
+      "action": "assert"
+    },
+    "outcome": "replace",
+    "title": "Replace one policy, preserve the rest",
+    "reason": "This field has one current value. The previous value remains available in the audit history.",
+    "retires": [
+      "fact-refund"
+    ],
+    "affected": [
+      "decision-765a9376-0fa",
+      "decision-9a63404c-b73",
+      "decision-ada",
+      "decision-e0c0d6a3-e3b",
+      "decision-noor"
+    ],
+    "preserved": [
+      "fact-france",
+      "fact-uae",
+      "fact-email"
+    ],
+    "paths": [
+      {
+        "decisionId": "decision-765a9376-0fa",
+        "nodeIds": [
+          "decision-765a9376-0fa",
+          "fact-refund"
+        ]
+      },
+      {
+        "decisionId": "decision-9a63404c-b73",
+        "nodeIds": [
+          "decision-9a63404c-b73",
+          "decision-e0c0d6a3-e3b",
+          "decision-765a9376-0fa",
+          "fact-refund"
+        ]
+      },
+      {
+        "decisionId": "decision-ada",
+        "nodeIds": [
+          "decision-ada",
+          "fact-refund"
+        ]
+      },
+      {
+        "decisionId": "decision-e0c0d6a3-e3b",
+        "nodeIds": [
+          "decision-e0c0d6a3-e3b",
+          "decision-765a9376-0fa",
+          "fact-refund"
+        ]
+      },
+      {
+        "decisionId": "decision-noor",
+        "nodeIds": [
+          "decision-noor",
+          "fact-refund"
+        ]
+      }
+    ]
+  },
+  "refresh": {
+    "refreshed": [
+      {
+        "run": {
+          "id": "run-ea03a6d9-840",
+          "caseId": "case-90b44666-461",
+          "request": {
+            "question": "Check whether this purchase is within the current standard return window.",
+            "days": 20,
+            "destination": "Germany",
+            "topics": [
+              "returns"
+            ],
+            "claim": "outside_window"
+          },
+          "replacesRunId": "run-8569225e-107",
+          "question": "Check whether this purchase is within the current standard return window.",
+          "mode": "model",
+          "orchestration": "server-evidence",
+          "model": "ollama/qwen3:0.6b",
+          "basedOnRevision": 3,
+          "createdAt": "2026-10-16T15:26:59.367Z",
+          "durationMs": 2829,
+          "decisionIds": [
+            "decision-f36b87f1-8c2",
+            "decision-eee6e6e0-457",
+            "decision-ad6a658e-a45"
+          ],
+          "traces": [
+            {
+              "agentId": "team-analyst:case-90b44666-461",
+              "tool": "read_returns_policy",
+              "revision": 3,
+              "factIds": [
+                "fact-7c18ccb3-c45"
+              ],
+              "decisionIds": [],
+              "watchedRelations": [
+                "refund_days"
+              ],
+              "durationMs": 152
+            },
+            {
+              "agentId": "team-reviewer:case-90b44666-461",
+              "tool": "review_handoff",
+              "revision": 3,
+              "factIds": [],
+              "decisionIds": [
+                "decision-f36b87f1-8c2"
+              ],
+              "durationMs": 0
+            },
+            {
+              "agentId": "team-writer:case-90b44666-461",
+              "tool": "read_reviewed_handoff",
+              "revision": 3,
+              "factIds": [],
+              "decisionIds": [
+                "decision-eee6e6e0-457"
+              ],
+              "durationMs": 0
+            }
+          ],
+          "inputTokens": 889,
+          "outputTokens": 179
+        },
+        "decisions": [
+          {
+            "id": "decision-f36b87f1-8c2",
+            "agentId": "team-analyst:case-90b44666-461",
+            "text": "A 20-day-old purchase is outside the current 14-day standard return window in Germany.",
+            "factIds": [
+              "fact-7c18ccb3-c45"
+            ],
+            "decisionIds": [],
+            "watches": [
+              "refund_days"
+            ],
+            "runId": "run-ea03a6d9-840",
+            "origin": "model",
+            "citations": [
+              "fact-7c18ccb3-c45"
+            ],
+            "assessments": [
+              {
+                "topic": "returns",
+                "outcome": "outside_window"
+              }
+            ],
+            "status": "current",
+            "createdAt": "2026-10-16T15:27:00.394Z"
+          },
+          {
+            "id": "decision-eee6e6e0-457",
+            "agentId": "team-reviewer:case-90b44666-461",
+            "text": "A 20-day-old purchase is outside the current 14-day standard return window in Germany.",
+            "factIds": [],
+            "decisionIds": [
+              "decision-f36b87f1-8c2"
+            ],
+            "watches": [],
+            "runId": "run-ea03a6d9-840",
+            "origin": "model",
+            "citations": [
+              "fact-7c18ccb3-c45"
+            ],
+            "assessments": [
+              {
+                "topic": "returns",
+                "outcome": "outside_window"
+              }
+            ],
+            "status": "current",
+            "createdAt": "2026-10-16T15:27:01.155Z"
+          },
+          {
+            "id": "decision-ad6a658e-a45",
+            "agentId": "team-writer:case-90b44666-461",
+            "text": "A 20-day-old purchase is outside the current 14-day standard return window.",
+            "factIds": [],
+            "decisionIds": [
+              "decision-eee6e6e0-457"
+            ],
+            "watches": [],
+            "runId": "run-ea03a6d9-840",
+            "origin": "model",
+            "citations": [
+              "fact-7c18ccb3-c45"
+            ],
+            "assessments": [
+              {
+                "topic": "returns",
+                "outcome": "outside_window"
+              }
+            ],
+            "status": "current",
+            "createdAt": "2026-10-16T15:27:02.134Z"
+          }
+        ],
+        "revision": 4,
+        "note": "Live model inference; tools, structured outcomes, citation IDs and revision checked. Prose can be wrong. Draft not sent."
+      }
+    ],
+    "preservedCases": 1
+  },
+  "persistedRunCount": 3
+}

@@ -1,0 +1,867 @@
+{
+  "kind": "synthetic-dependency-benchmark",
+  "backend": "falkordb",
+  "cases": 18,
+  "passed": 18,
+  "durationMs": 11756,
+  "methods": [
+    {
+      "method": "graph",
+      "tp": 44,
+      "fp": 0,
+      "fn": 0,
+      "tn": 117,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "method": "reference",
+      "tp": 44,
+      "fp": 0,
+      "fn": 0,
+      "tn": 117,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "method": "direct",
+      "tp": 14,
+      "fp": 0,
+      "fn": 30,
+      "tn": 117,
+      "precision": 1,
+      "recall": 0.3181818181818182
+    },
+    {
+      "method": "all",
+      "tp": 44,
+      "fp": 80,
+      "fn": 0,
+      "tn": 37,
+      "precision": 0.3548387096774194,
+      "recall": 1
+    }
+  ],
+  "rows": [
+    {
+      "name": "Replace return policy",
+      "shape": "chain",
+      "depth": 1,
+      "expected": 1,
+      "expectedIds": [
+        "returns-0"
+      ],
+      "found": 1,
+      "foundIds": [
+        "returns-0"
+      ],
+      "queryMs": 110.7,
+      "referenceMs": 0.3,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "reference": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "all": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 1
+    },
+    {
+      "name": "Add previously unverified destination",
+      "shape": "chain",
+      "depth": 1,
+      "expected": 1,
+      "expectedIds": [
+        "shipping-0"
+      ],
+      "found": 1,
+      "foundIds": [
+        "shipping-0"
+      ],
+      "queryMs": 104.4,
+      "referenceMs": 0.21,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "reference": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "all": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 1
+    },
+    {
+      "name": "Change support contact",
+      "shape": "chain",
+      "depth": 1,
+      "expected": 1,
+      "expectedIds": [
+        "contact-0"
+      ],
+      "found": 1,
+      "foundIds": [
+        "contact-0"
+      ],
+      "queryMs": 94.1,
+      "referenceMs": 0.05,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "reference": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2
+        },
+        "all": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 1
+    },
+    {
+      "name": "Reject customer policy rewrite",
+      "shape": "chain",
+      "depth": 1,
+      "expected": 0,
+      "expectedIds": [],
+      "found": 0,
+      "foundIds": [],
+      "queryMs": 72.7,
+      "referenceMs": 0,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "reference": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "direct": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "all": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        }
+      },
+      "longestPath": 0
+    },
+    {
+      "name": "Replace return policy",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "returns-0",
+        "returns-1",
+        "returns-2"
+      ],
+      "found": 3,
+      "foundIds": [
+        "returns-0",
+        "returns-1",
+        "returns-2"
+      ],
+      "queryMs": 102.3,
+      "referenceMs": 0.17,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6
+        },
+        "all": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Add previously unverified destination",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2"
+      ],
+      "found": 3,
+      "foundIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2"
+      ],
+      "queryMs": 105.4,
+      "referenceMs": 0.08,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6
+        },
+        "all": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Change support contact",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2"
+      ],
+      "found": 3,
+      "foundIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2"
+      ],
+      "queryMs": 107.1,
+      "referenceMs": 0.14,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6
+        },
+        "all": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Reject customer policy rewrite",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 0,
+      "expectedIds": [],
+      "found": 0,
+      "foundIds": [],
+      "queryMs": 67.3,
+      "referenceMs": 0,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9
+        },
+        "reference": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9
+        },
+        "direct": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9
+        },
+        "all": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9
+        }
+      },
+      "longestPath": 0
+    },
+    {
+      "name": "Replace return policy",
+      "shape": "chain",
+      "depth": 6,
+      "expected": 6,
+      "expectedIds": [
+        "returns-0",
+        "returns-1",
+        "returns-2",
+        "returns-3",
+        "returns-4",
+        "returns-5"
+      ],
+      "found": 6,
+      "foundIds": [
+        "returns-0",
+        "returns-1",
+        "returns-2",
+        "returns-3",
+        "returns-4",
+        "returns-5"
+      ],
+      "queryMs": 102.7,
+      "referenceMs": 0.1,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "reference": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 5,
+          "tn": 12
+        },
+        "all": {
+          "tp": 6,
+          "fp": 12,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 6
+    },
+    {
+      "name": "Add previously unverified destination",
+      "shape": "chain",
+      "depth": 6,
+      "expected": 6,
+      "expectedIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2",
+        "shipping-3",
+        "shipping-4",
+        "shipping-5"
+      ],
+      "found": 6,
+      "foundIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2",
+        "shipping-3",
+        "shipping-4",
+        "shipping-5"
+      ],
+      "queryMs": 105.3,
+      "referenceMs": 0.18,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "reference": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 5,
+          "tn": 12
+        },
+        "all": {
+          "tp": 6,
+          "fp": 12,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 6
+    },
+    {
+      "name": "Change support contact",
+      "shape": "chain",
+      "depth": 6,
+      "expected": 6,
+      "expectedIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2",
+        "contact-3",
+        "contact-4",
+        "contact-5"
+      ],
+      "found": 6,
+      "foundIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2",
+        "contact-3",
+        "contact-4",
+        "contact-5"
+      ],
+      "queryMs": 108.8,
+      "referenceMs": 0.28,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "reference": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 5,
+          "tn": 12
+        },
+        "all": {
+          "tp": 6,
+          "fp": 12,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 6
+    },
+    {
+      "name": "Reject customer policy rewrite",
+      "shape": "chain",
+      "depth": 6,
+      "expected": 0,
+      "expectedIds": [],
+      "found": 0,
+      "foundIds": [],
+      "queryMs": 66,
+      "referenceMs": 0,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 18
+        },
+        "reference": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 18
+        },
+        "direct": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 18
+        },
+        "all": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 18
+        }
+      },
+      "longestPath": 0
+    },
+    {
+      "name": "Branching return dependency with a shared draft",
+      "shape": "branch",
+      "depth": 3,
+      "expected": 4,
+      "expectedIds": [
+        "returns-root",
+        "returns-review",
+        "returns-writer",
+        "shared-draft"
+      ],
+      "found": 4,
+      "foundIds": [
+        "returns-review",
+        "returns-root",
+        "returns-writer",
+        "shared-draft"
+      ],
+      "queryMs": 108.2,
+      "referenceMs": 0.07,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "reference": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 3,
+          "tn": 3
+        },
+        "all": {
+          "tp": 4,
+          "fp": 3,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "New destination reaches a shared draft",
+      "shape": "shared",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "shipping-root",
+        "shipping-writer",
+        "shared-draft"
+      ],
+      "found": 3,
+      "foundIds": [
+        "shared-draft",
+        "shipping-root",
+        "shipping-writer"
+      ],
+      "queryMs": 94.6,
+      "referenceMs": 0.06,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 4
+        },
+        "all": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Unrelated support change spares both workflows",
+      "shape": "independent",
+      "depth": 1,
+      "expected": 1,
+      "expectedIds": [
+        "contact-only"
+      ],
+      "found": 1,
+      "foundIds": [
+        "contact-only"
+      ],
+      "queryMs": 110.5,
+      "referenceMs": 0.08,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "all": {
+          "tp": 1,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 1
+    },
+    {
+      "name": "Blocked claim preserves a branching graph",
+      "shape": "blocked",
+      "depth": 3,
+      "expected": 0,
+      "expectedIds": [],
+      "found": 0,
+      "foundIds": [],
+      "queryMs": 70.2,
+      "referenceMs": 0,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 7
+        },
+        "reference": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 7
+        },
+        "direct": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 7
+        },
+        "all": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 7
+        }
+      },
+      "longestPath": 0
+    },
+    {
+      "name": "Empty shipping collection gains its first destination",
+      "shape": "absence",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "shipping-root",
+        "shipping-writer",
+        "shared-draft"
+      ],
+      "found": 3,
+      "foundIds": [
+        "shared-draft",
+        "shipping-root",
+        "shipping-writer"
+      ],
+      "queryMs": 105.5,
+      "referenceMs": 0.06,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 4
+        },
+        "all": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Already stale intermediates still lead to current consumers",
+      "shape": "historical",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "returns-root",
+        "returns-writer",
+        "shared-draft"
+      ],
+      "found": 3,
+      "foundIds": [
+        "returns-root",
+        "returns-writer",
+        "shared-draft"
+      ],
+      "queryMs": 118,
+      "referenceMs": 0.07,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 3
+        },
+        "all": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    }
+  ],
+  "ranAt": "2026-10-16T15:18:37.781Z",
+  "note": "18 synthetic fixtures: chains 1/3/6 hops, branching/shared dependencies, empty reads and historical decisions. Graph and full in-memory traversal should agree. Direct-only and refresh-all illustrate weaker invalidation strategies, not competing products. queryMs measures the complete persisted preview; referenceMs measures traversal only and is not a fair speed comparison. No model-quality or production-scale claim. Main workspace untouched."
+}
