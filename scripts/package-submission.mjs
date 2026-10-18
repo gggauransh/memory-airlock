@@ -2,7 +2,7 @@ import { readdir, readFile, mkdir, copyFile, writeFile } from 'node:fs/promises'
 import { resolve, relative, dirname } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..'), target = resolve(root, 'artifacts/submission/source');
-const directories = ['src', 'tests', 'public', 'agent', 'docs'];
+const directories = ['src', 'tests', 'public', 'agent', 'docs', '.github'];
 const roots = ['README.md', 'CONTRIBUTIONS.md', 'AGENTS.md', 'CLAUDE.md', 'compose.yaml', 'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', 'tsconfig.json', '.env.example', '.gitignore'];
 const files = [...roots, 'scripts/package-submission.mjs'];
 for (const folder of directories) {
