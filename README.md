@@ -6,6 +6,10 @@ Built for Graph Hacks: Context for AI Agents, **Agent Memory and Coordination**.
 
 Public source: [https://github.com/gggauransh/memory-airlock](https://github.com/gggauransh/memory-airlock).
 
+[Watch the 3-minute demo](https://github.com/gggauransh/memory-airlock/releases/tag/v0.1.0-demo) · [Judge's guide](docs/JUDGES.md)
+
+[![Real FalkorDB verification](https://github.com/gggauransh/memory-airlock/actions/workflows/verify.yml/badge.svg)](https://github.com/gggauransh/memory-airlock/actions/workflows/verify.yml)
+
 Airlock connects policy evidence to research, review and draft responses. Preview a policy change, inspect the multi-hop consequences, approve it, and refresh the affected workflows while independent cases stay current. New knowledge matters too: adding Germany invalidates a previous “shipping unverified” answer.
 
 ## Free setup
@@ -54,7 +58,7 @@ OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
 
 No payment card or API key is needed. Inference uses your computer; download, hardware, electricity and internet are your resources. The model runs locally and the database may be local or Cloud Free. A stronger compatible local model can be selected if your machine has capacity.
 
-Local mode uses **three real model generations with server-mandated evidence reads**. It does not claim autonomous model-selected tool use. Atlas receives scoped graph evidence; Sage audits structured findings and customer claims; Echo generates a draft from the reviewed handoff. The server checks topic coverage, outcomes, citation IDs and revision consistency. Correct IDs and structured outcomes do not prove prose is correct. Replay is explicitly labelled and performs no inference.
+Local mode uses **three real model generations with server-mandated evidence reads**. Atlas now derives its assessment from raw graph evidence without receiving a precomputed answer or an answer-forcing schema. A separate server audit compares that assessment and customer claims with deterministic policy checks. Sage receives the audit and typed handoff; Echo drafts from verified conclusions. Mistaken research remains visible in history alongside its correction. This is a controlled reasoning workflow, not autonomous model-selected tool use. The server checks topic coverage, reviewed outcomes, citation IDs and revision consistency; those checks do not prove prose is correct. Replay is explicitly labelled and performs no inference.
 
 ## The judge’s first minute
 
@@ -85,6 +89,8 @@ pnpm verify:live
 The live proof creates an isolated synthetic FalkorDB workspace and forces **local Ollama**, so it cannot spend Gateway credits. It checks two real model cases, selective invalidation, stale-draft rejection, selective refresh and reloaded persistence. Add --local-store when running the source script to exercise only the local adapter. Tests skip three live database cases if FALKORDB_TEST_URL is absent.
 
 October 16 verification: **56 tests passed, no failures or skips** against FalkorDB Cloud. **18/18 synthetic comparison fixtures passed**. The full in-memory traversal also passed: this comparison demonstrates dependency correctness, not unique database capability or superiority over competitors. Raw results: [comparison](docs/benchmark-results.json), [local inference proof](docs/live-proof.json).
+
+October 18: **56/56 tests and 18/18 comparison fixtures passed against a fresh real FalkorDB service in GitHub Actions**, with a clean frozen-lockfile install. [Public verification run](https://github.com/gggauransh/memory-airlock/actions/runs/39118219567). Independent research and visible correction were also tested with actual local inference using the local adapter; [fresh evidence](docs/local-proof-20261018.json). The existing Cloud instance's hostname no longer resolves, so restoring that particular local-demo connection remains pending; it is separate from the passing container verification. See [verification status](docs/VERIFICATION.md).
 
 ## Scope and disclosure
 
