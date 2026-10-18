@@ -1,0 +1,50 @@
+name: Verify graph behavior
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      falkordb:
+        image: falkordb/falkordb:latest
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      FALKORDB_TEST_URL: redis://127.0.0.1:6379
+      FALKORDB_URL: redis://127.0.0.1:6379
+      MEMORY_STORE: falkordb
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: node --check public/app.js
+      - name: All tests including real FalkorDB integration
+        run: pnpm test
+      - name: Real graph comparison
+        run: pnpm benchmark
+      - name: Record the container image used
+        if: always()
+        run: docker image inspect falkordb/falkordb:latest --format '{{json .RepoDigests}}'
