@@ -162,6 +162,12 @@ export async function refreshAffected(airlock: Airlock, input: unknown, testMode
 export async function readCurrentDraft(airlock: Airlock, input: unknown) {
   const { runId } = z.object({ runId: z.string().min(1).max(100) }).strict().parse(input), state = await airlock.state(), run = latestCases(state.runs).find(r => r.id === runId);
   if (!run || run.decisionIds.some(key => state.decisions.find(d => d.id === key)?.status !== 'current')) throw new Conflict('This draft is stale or superseded. Refresh its workflow before reuse.');
+  if (!run.request) throw new Conflict('This older run has no saved case fields. Run the case again before reuse.');
   const draft = state.decisions.find(d => d.id === run.decisionIds.at(-1))!;
-  return { text: draft.text, runId, revision: state.revision, citations: draft.citations, note: 'Current at this revision. Recheck after policy updates. Not sent.' };
+  const readIds = new Set(run.decisionIds.flatMap(key => state.decisions.find(d => d.id === key)?.factIds ?? []));
+  const evidence = state.facts.filter(f => f.status === 'active' && readIds.has(f.id) && run.request!.topics.some(topic => topicRelation[topic] === f.relation));
+  const checks = checksFor(evidence, run.request);
+  return { text: checks.map(c => c.answer).join(' '), generatedText: draft.text, basis: 'verified-policy' as const,
+    assessments: checks.map(({ topic, outcome }) => ({ topic, outcome })), runId, revision: state.revision, citations: evidence.map(f => f.id),
+    note: 'Assembled from verified policy evidence and saved case fields. Current at this revision; recheck after policy updates. Current policy does not establish historical entitlement. Not sent.' };
 }

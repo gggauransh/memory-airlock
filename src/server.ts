@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Airlock, graphOf, relations, sources } from './domain.ts';
-import { FalkorStore, LocalStore } from './store.ts';
+import { FalkorStore } from './store.ts';
 import { evaluate } from './evaluate.ts';
 import { explainWithAI } from './ai.ts';
 import { ZodError } from 'zod';
@@ -11,10 +11,10 @@ import { runTeam, aiAvailable, refreshAffected, readCurrentDraft, modelName } fr
 import { benchmark } from './benchmark.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const mode = process.env.MEMORY_STORE || 'local';
-if (!['local', 'falkordb'].includes(mode)) throw new Error('MEMORY_STORE must be local or falkordb.');
-if (mode === 'falkordb' && !process.env.FALKORDB_URL) throw new Error('FALKORDB_URL is required. There is no silent fallback to local storage.');
-const store = mode === 'falkordb' ? await FalkorStore.connect(process.env.FALKORDB_URL!, process.env.AIRLOCK_WORKSPACE || 'demo-shop') : new LocalStore(resolve(root, process.env.AIRLOCK_LOCAL_FILE || 'data/demo-state.jsonl'));
+const mode = process.env.MEMORY_STORE || 'falkordb';
+if (mode !== 'falkordb') throw new Error('This application requires FalkorDB. The local reference adapter is reserved for isolated tests and comparisons.');
+if (!process.env.FALKORDB_URL) throw new Error('FALKORDB_URL is required. Start FalkorDB with Docker Compose or configure the existing Cloud instance. There is no storage fallback.');
+const store = await FalkorStore.connect(process.env.FALKORDB_URL, process.env.AIRLOCK_WORKSPACE || 'demo-shop');
 const airlock = new Airlock(store); await airlock.initialize();
 const port = Number(process.env.PORT || 4317);
 const sessionToken = (await import('node:crypto')).randomBytes(24).toString('hex');
@@ -70,7 +70,7 @@ const server = createServer(async (req, res) => {
       if (benchmarkBusy) return send(409, { error: 'The comparison is already running.' });
       benchmarkBusy = true;
       const namespace = `benchmark-${Date.now()}-${(await import('node:crypto')).randomBytes(4).toString('hex')}`;
-      try { return send(200, await benchmark(async name => mode === 'falkordb' ? FalkorStore.connect(process.env.FALKORDB_URL!, `${namespace}-${name}`) : new LocalStore())); }
+      try { return send(200, await benchmark(async name => FalkorStore.connect(process.env.FALKORDB_URL!, `${namespace}-${name}`))); }
       finally { benchmarkBusy = false; }
     }
     if (url.pathname === '/api/ai') {
