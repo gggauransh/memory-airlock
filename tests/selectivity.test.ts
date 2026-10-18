@@ -45,6 +45,10 @@ test('empty policy reads watch later additions without borrowing unrelated facts
   const r = await runTeam(a, returns);
   assert.deepEqual(r.decisions[0].factIds, []); assert.deepEqual(r.decisions[2].citations, []);
   assert.equal(r.decisions[2].assessments![0].outcome, 'needs_confirmation');
+  const reply = await readCurrentDraft(a, { runId: r.run.id });
+  assert.equal(reply.text, 'No current refund window is verified. Do not promise eligibility.');
+  assert.deepEqual(reply.citations, []);
+  assert.deepEqual(reply.assessments, [{ topic: 'returns', outcome: 'needs_confirmation' }]);
   const p = await a.preview(change());
   assert.ok(r.run.decisionIds.every(key => p.affected.includes(key)));
   assert.ok(p.paths!.some(p => p.nodeIds.at(-1) === 'scope:refund_days'));

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { Airlock } from '../src/domain.ts';
 import { LocalStore } from '../src/store.ts';
-import { runTeam } from '../src/team.ts';
+import { runTeam, readCurrentDraft } from '../src/team.ts';
 
 test('local SDK boundary performs three real HTTP generations after server-mandated scoped reads, without Gateway', async () => {
   const requests: any[] = [], old = { ...process.env };
@@ -13,7 +13,7 @@ test('local SDK boundary performs three real HTTP generations after server-manda
     const context = JSON.parse(body.messages.at(-1).content);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ id: 'local-contract', object: 'chat.completion', model: 'contract-model', created: 1,
-      choices: [{ index: 0, finish_reason: 'stop', message: { role: 'assistant', content: JSON.stringify({ summary: requests.length === 1 ? 'The researcher incorrectly concludes this purchase is outside the window.' : 'This purchase is within the verified current 30-day standard window.', citations: context.requiredCitationIds, assessments: requests.length === 1 ? [{topic:'returns',outcome:'outside_window'}] : context.requiredAssessments }) } }],
+      choices: [{ index: 0, finish_reason: 'stop', message: { role: 'assistant', content: JSON.stringify({ summary: requests.length === 1 ? 'The researcher incorrectly concludes this purchase is outside the window.' : requests.length === 3 ? 'France has a special 90-day refund policy. We promise a full refund.' : 'This purchase is within the verified current 30-day standard window.', citations: context.requiredCitationIds, assessments: requests.length === 1 ? [{topic:'returns',outcome:'outside_window'}] : context.requiredAssessments }) } }],
       usage: { prompt_tokens: 10, completion_tokens: 20, total_tokens: 30 } }));
   });
   await new Promise<void>(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -29,6 +29,11 @@ test('local SDK boundary performs three real HTTP generations after server-manda
     assert.equal(r.decisions[0].assessments![0].outcome, 'outside_window');
     assert.equal(r.decisions[1].assessments![0].outcome, 'within_window');
     assert.match(r.decisions[1].corrections!.join(' '), /Research conclusion/);
+    const reusable = await readCurrentDraft(a, { runId: r.run.id });
+    assert.equal(reusable.text, 'A 20-day-old purchase is within the current 30-day standard return window.');
+    assert.equal(reusable.generatedText, 'France has a special 90-day refund policy. We promise a full refund.');
+    assert.equal(reusable.basis, 'verified-policy');
+    assert.deepEqual(reusable.citations, ['fact-refund']);
     const research = JSON.parse(requests[0].body.messages.at(-1).content);
     assert.equal(research.requiredAssessments, undefined, 'Research must derive its own outcome, not receive the answer.');
     assert.equal(research.contexts[0].checks, undefined, 'Evidence reads must not leak precomputed answers.');
