@@ -28,6 +28,6 @@
 - [x] Modify src/team.ts; preserve reviewed-stage guards. Typecheck and the full local suite passed. A clean GitHub run passed all 56 tests and 18 fixtures with real FalkorDB.
 - [x] Record real local inference with both tested local models using the local adapter. Retain prior Cloud inference proof separately; restoring the old Cloud endpoint awaits account sign-in.
 - [x] Publish missing source files, demo video and updated truthful documentation.
-- [ ] Verify exact anonymous public source contents and finish the current source archive.
+- [x] Verify all 55 anonymous public source files match local Git blob hashes, with no missing or extra files. Build the 55-file source archive with no credentials, local state or dependencies included.
 
 Execution: continue in this session under the participant's request to implement the improvement plan. No automatic local commits or new services.
