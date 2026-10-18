@@ -14,6 +14,8 @@ FalkorDB is the central store in the demonstrated mode. It stores sources, facts
 
 The free path uses local Ollama Qwen3, three real model generations, and server-mandated scoped evidence reads. Atlas independently derives an assessment from raw evidence, without precomputed answers in its prompt or schema. A deterministic audit checks the research; Sage receives the corrections and Echo drafts from verified conclusions. Wrong research and its correction remain visible in history. This is a controlled model workflow, not autonomous tool selection. Reviewed outcomes, citation IDs and memory revision are checked; natural-language prose can still be wrong. Deterministic replay is separately labelled.
 
+Reusable replies are assembled from the verified policy facts actually read and saved case fields; model wording is retained separately for review. An incorrect sentence with valid structured fields cannot become the downloadable policy reply. The web app requires FalkorDB and stops if its configuration is missing; the local reference adapter is reserved for isolated checks.
+
 ## Measured evidence
 
 - 18 isolated synthetic FalkorDB fixtures: 44 affected classifications found, zero missed and zero unnecessary refreshes.
@@ -21,6 +23,7 @@ The free path uses local Ollama Qwen3, three real model generations, and server-
 - Functional and SDK tests cover preservation, stale approvals, source-role gates, handoffs, absent knowledge, independent cases, draft blocking, selective refresh, inference races and wrong structured review outcomes.
 - A real local-model/FalkorDB proof created two independent cases, changed refund policy, rejected stale reuse, refreshed only the return workflow, and reloaded the retained runs. Raw synthetic proof is in docs/live-proof.json.
 - Fresh October 18 GitHub verification passed 56/56 tests and 18/18 graph fixtures against a real FalkorDB service after a clean install: https://github.com/gggauransh/memory-airlock/actions/runs/39118219567. Updated independent local reasoning was separately exercised and its mistakes/corrections retained in docs/local-proof-20261018.json.
+- Final October 18 Cloud verification passed 58/58 tests and 18/18 graph fixtures after resuming the existing Free instance. Real local model/Cloud proofs, including a prompt that attempts to override verified policy, are retained in docs/cloud-proof-20261018.json and docs/adversarial-proof-20261018.json. The verified reusable reply remained correct under the supported typed rules; this is not a general security guarantee.
 
 ## Scope and disclosure
 

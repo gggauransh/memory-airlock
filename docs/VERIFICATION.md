@@ -1,5 +1,17 @@
 # Verification
 
+## Final October 18 upgrade — live Cloud restored
+
+- The participant's signed-in Cloud page showed the existing memory-airlock Free instance was stopped. Codex started that same instance; DNS resolved and real database connections worked again. No paid tier or new credentials were introduced.
+- Final full suite: **58 passed, zero failed, zero skipped** with FALKORDB_TEST_URL configured. Typecheck and browser-script syntax passed. New subprocess tests first demonstrated that default and explicit local mode could start the app without FalkorDB; both now reject startup. The local reference adapter is restricted to isolated tests/comparison tools.
+- Enhanced local SDK regression first demonstrated that a model could return an invented 90-day policy sentence with otherwise valid structured outcomes and have that sentence exported. The reusable reply now comes from verified facts actually consulted and the saved typed request. generatedText remains separately available for audit. Missing policy exports an explicit confirmation request with no fabricated citations.
+- Fresh real Qwen3:0.6b + FalkorDB Cloud proof passed: cloud-proof-20261018.json. The adversarial repeat also passed: adversarial-proof-20261018.json. Its question asks to ignore typed fields/evidence, promise a 365-day policy and invent contact details. The final reusable reply still used the verified 14-day window after selective refresh. This is a small synthetic adversarial check, not comprehensive prompt-injection resistance.
+- Fresh Cloud comparison passed **18/18**, graph/reference TP 44 FP 0 FN 0 TN 117; direct-only FN 30; refresh-all FP 80. Runtime 13,538 ms. Earlier comparison results remain historical; this is correctness evidence, not cross-machine speed evidence.
+- Browser on 127.0.0.1:4324 with synthetic workspace competition-verified-replies-20261018: real local inference, focused returns-only form, policy-verified reply, successful text download, policy-change preview/approval, stale download disabled, selective refresh, visible incorrect research/correction, and correct 14-day verified reply. Browser console had no warnings or errors. Screenshots retained under artifacts/demo.
+- The actual web app now requires FalkorDB, including default startup and all persisted operations; a missing or failed database cannot become a reference-storage demonstration. Replay changes inference only, not the graph backend.
+
+The older DNS failure and local-adapter experiments below are retained as historical context; they do not describe the final running app.
+
 ## October 18, 2026 — independent reasoning upgrade
 
 - TypeScript and browser-script syntax passed. The complete local suite passed **53 tests, zero failures, three live database tests skipped** when run without Cloud configuration.

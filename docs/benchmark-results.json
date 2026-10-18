@@ -3,7 +3,7 @@
   "backend": "falkordb",
   "cases": 18,
   "passed": 18,
-  "durationMs": 11756,
+  "durationMs": 13538,
   "methods": [
     {
       "method": "graph",
@@ -55,8 +55,8 @@
       "foundIds": [
         "returns-0"
       ],
-      "queryMs": 110.7,
-      "referenceMs": 0.3,
+      "queryMs": 112.2,
+      "referenceMs": 0.28,
       "passed": true,
       "scores": {
         "graph": {
@@ -98,8 +98,8 @@
       "foundIds": [
         "shipping-0"
       ],
-      "queryMs": 104.4,
-      "referenceMs": 0.21,
+      "queryMs": 103.3,
+      "referenceMs": 0.26,
       "passed": true,
       "scores": {
         "graph": {
@@ -141,8 +141,8 @@
       "foundIds": [
         "contact-0"
       ],
-      "queryMs": 94.1,
-      "referenceMs": 0.05,
+      "queryMs": 107.1,
+      "referenceMs": 0.1,
       "passed": true,
       "scores": {
         "graph": {
@@ -180,7 +180,7 @@
       "expectedIds": [],
       "found": 0,
       "foundIds": [],
-      "queryMs": 72.7,
+      "queryMs": 64.4,
       "referenceMs": 0,
       "passed": true,
       "scores": {
@@ -227,101 +227,7 @@
         "returns-1",
         "returns-2"
       ],
-      "queryMs": 102.3,
-      "referenceMs": 0.17,
-      "passed": true,
-      "scores": {
-        "graph": {
-          "tp": 3,
-          "fp": 0,
-          "fn": 0,
-          "tn": 6
-        },
-        "reference": {
-          "tp": 3,
-          "fp": 0,
-          "fn": 0,
-          "tn": 6
-        },
-        "direct": {
-          "tp": 1,
-          "fp": 0,
-          "fn": 2,
-          "tn": 6
-        },
-        "all": {
-          "tp": 3,
-          "fp": 6,
-          "fn": 0,
-          "tn": 0
-        }
-      },
-      "longestPath": 3
-    },
-    {
-      "name": "Add previously unverified destination",
-      "shape": "chain",
-      "depth": 3,
-      "expected": 3,
-      "expectedIds": [
-        "shipping-0",
-        "shipping-1",
-        "shipping-2"
-      ],
-      "found": 3,
-      "foundIds": [
-        "shipping-0",
-        "shipping-1",
-        "shipping-2"
-      ],
-      "queryMs": 105.4,
-      "referenceMs": 0.08,
-      "passed": true,
-      "scores": {
-        "graph": {
-          "tp": 3,
-          "fp": 0,
-          "fn": 0,
-          "tn": 6
-        },
-        "reference": {
-          "tp": 3,
-          "fp": 0,
-          "fn": 0,
-          "tn": 6
-        },
-        "direct": {
-          "tp": 1,
-          "fp": 0,
-          "fn": 2,
-          "tn": 6
-        },
-        "all": {
-          "tp": 3,
-          "fp": 6,
-          "fn": 0,
-          "tn": 0
-        }
-      },
-      "longestPath": 3
-    },
-    {
-      "name": "Change support contact",
-      "shape": "chain",
-      "depth": 3,
-      "expected": 3,
-      "expectedIds": [
-        "contact-0",
-        "contact-1",
-        "contact-2"
-      ],
-      "found": 3,
-      "foundIds": [
-        "contact-0",
-        "contact-1",
-        "contact-2"
-      ],
-      "queryMs": 107.1,
+      "queryMs": 103,
       "referenceMs": 0.14,
       "passed": true,
       "scores": {
@@ -353,6 +259,100 @@
       "longestPath": 3
     },
     {
+      "name": "Add previously unverified destination",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2"
+      ],
+      "found": 3,
+      "foundIds": [
+        "shipping-0",
+        "shipping-1",
+        "shipping-2"
+      ],
+      "queryMs": 116.6,
+      "referenceMs": 0.12,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6
+        },
+        "all": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
+      "name": "Change support contact",
+      "shape": "chain",
+      "depth": 3,
+      "expected": 3,
+      "expectedIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2"
+      ],
+      "found": 3,
+      "foundIds": [
+        "contact-0",
+        "contact-1",
+        "contact-2"
+      ],
+      "queryMs": 143,
+      "referenceMs": 0.12,
+      "passed": true,
+      "scores": {
+        "graph": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "reference": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6
+        },
+        "direct": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6
+        },
+        "all": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "tn": 0
+        }
+      },
+      "longestPath": 3
+    },
+    {
       "name": "Reject customer policy rewrite",
       "shape": "chain",
       "depth": 3,
@@ -360,7 +360,7 @@
       "expectedIds": [],
       "found": 0,
       "foundIds": [],
-      "queryMs": 67.3,
+      "queryMs": 187.1,
       "referenceMs": 0,
       "passed": true,
       "scores": {
@@ -413,8 +413,8 @@
         "returns-4",
         "returns-5"
       ],
-      "queryMs": 102.7,
-      "referenceMs": 0.1,
+      "queryMs": 102.3,
+      "referenceMs": 0.14,
       "passed": true,
       "scores": {
         "graph": {
@@ -466,8 +466,8 @@
         "shipping-4",
         "shipping-5"
       ],
-      "queryMs": 105.3,
-      "referenceMs": 0.18,
+      "queryMs": 106.1,
+      "referenceMs": 0.11,
       "passed": true,
       "scores": {
         "graph": {
@@ -519,8 +519,8 @@
         "contact-4",
         "contact-5"
       ],
-      "queryMs": 108.8,
-      "referenceMs": 0.28,
+      "queryMs": 100.3,
+      "referenceMs": 0.17,
       "passed": true,
       "scores": {
         "graph": {
@@ -558,7 +558,7 @@
       "expectedIds": [],
       "found": 0,
       "foundIds": [],
-      "queryMs": 66,
+      "queryMs": 109.2,
       "referenceMs": 0,
       "passed": true,
       "scores": {
@@ -607,8 +607,8 @@
         "returns-writer",
         "shared-draft"
       ],
-      "queryMs": 108.2,
-      "referenceMs": 0.07,
+      "queryMs": 107,
+      "referenceMs": 0.11,
       "passed": true,
       "scores": {
         "graph": {
@@ -654,8 +654,8 @@
         "shipping-root",
         "shipping-writer"
       ],
-      "queryMs": 94.6,
-      "referenceMs": 0.06,
+      "queryMs": 105.5,
+      "referenceMs": 0.11,
       "passed": true,
       "scores": {
         "graph": {
@@ -697,8 +697,8 @@
       "foundIds": [
         "contact-only"
       ],
-      "queryMs": 110.5,
-      "referenceMs": 0.08,
+      "queryMs": 99.6,
+      "referenceMs": 0.1,
       "passed": true,
       "scores": {
         "graph": {
@@ -736,7 +736,7 @@
       "expectedIds": [],
       "found": 0,
       "foundIds": [],
-      "queryMs": 70.2,
+      "queryMs": 73.8,
       "referenceMs": 0,
       "passed": true,
       "scores": {
@@ -783,8 +783,8 @@
         "shipping-root",
         "shipping-writer"
       ],
-      "queryMs": 105.5,
-      "referenceMs": 0.06,
+      "queryMs": 102.1,
+      "referenceMs": 0.11,
       "passed": true,
       "scores": {
         "graph": {
@@ -830,8 +830,8 @@
         "returns-writer",
         "shared-draft"
       ],
-      "queryMs": 118,
-      "referenceMs": 0.07,
+      "queryMs": 106.8,
+      "referenceMs": 0.13,
       "passed": true,
       "scores": {
         "graph": {
@@ -862,6 +862,6 @@
       "longestPath": 3
     }
   ],
-  "ranAt": "2026-10-16T15:18:37.781Z",
+  "ranAt": "2026-10-18T14:27:24.068Z",
   "note": "18 synthetic fixtures: chains 1/3/6 hops, branching/shared dependencies, empty reads and historical decisions. Graph and full in-memory traversal should agree. Direct-only and refresh-all illustrate weaker invalidation strategies, not competing products. queryMs measures the complete persisted preview; referenceMs measures traversal only and is not a fair speed comparison. No model-quality or production-scale claim. Main workspace untouched."
 }
