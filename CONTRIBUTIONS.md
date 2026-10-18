@@ -16,6 +16,8 @@ Still pending: the participant’s own failure-case verification and explanation
 
 ## Verification status
 
+Final October 18 update: Codex resumed the existing stopped Free Cloud instance, added policy-verified reusable replies while retaining generated wording separately, made FalkorDB mandatory for web-app startup, and tested a conflicting-instruction case with real local inference and Cloud. All 58 tests and 18 graph comparison fixtures passed. The participant identified that changed memory could make a previous answer outdated in a discussion; a complete independent architecture/query explanation has not been recorded. This statement does not claim that the participant personally authored these AI-assisted changes.
+
 - October 16: 56 tests passed with real FalkorDB Cloud, plus 18/18 synthetic graph comparison fixtures. Real local-model inference with the database, selective refresh and browser flows were verified. Raw evidence is retained in docs/.
 - October 18: typecheck and browser-script syntax passed; all 53 local tests passed, with three database cases skipped when no endpoint was loaded. A separate configured-Cloud run failed its three integration tests because the old hostname no longer resolves. This is disclosed rather than presented as a passing current Cloud run.
 - Updated independent reasoning was exercised with real local Qwen3:0.6b and Qwen3:1.7b, using the local adapter. Model mistakes and review corrections remain visible in the evidence. A larger model did not remove the need for review; the lightweight default is retained.

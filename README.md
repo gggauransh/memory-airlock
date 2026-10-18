@@ -14,16 +14,13 @@ Airlock connects policy evidence to research, review and draft responses. Previe
 
 ## Free setup
 
-Requires Node.js 24 and pnpm. Replay needs no model, account or key.
+Requires Node.js 24, pnpm and a reachable FalkorDB instance. Replay needs no model or model API key. The submitted app requires FalkorDB; the local reference adapter is reserved for isolated tests and comparisons.
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm dev
 ```
 
-Open http://127.0.0.1:4317. Without configuration this is a clearly labelled local reference demo, not FalkorDB integration proof.
-
-For the competition, start FalkorDB using Docker Compose or use FalkorDB Cloud Free. Copy .env.example to .env and configure:
+Start FalkorDB using Docker Compose or use FalkorDB Cloud Free. Copy .env.example to .env and configure:
 
 ```dotenv
 MEMORY_STORE=falkordb
@@ -36,6 +33,8 @@ AIRLOCK_WORKSPACE=my-synthetic-demo
 docker compose up -d
 pnpm dev
 ```
+
+Open http://127.0.0.1:4317. Missing graph configuration or an unavailable database stops the application; it cannot silently become a local-storage demo.
 
 Use the actual endpoint and TLS setting supplied by your instance. Failures never silently fall back to local storage. Use synthetic data. Cloud Free availability and retention depend on the provider; keep an export. Compose currently uses the upstream latest image: record the tested digest when using Docker. The measured Cloud run does not establish Docker verification.
 
@@ -59,6 +58,8 @@ OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
 No payment card or API key is needed. Inference uses your computer; download, hardware, electricity and internet are your resources. The model runs locally and the database may be local or Cloud Free. A stronger compatible local model can be selected if your machine has capacity.
 
 Local mode uses **three real model generations with server-mandated evidence reads**. Atlas now derives its assessment from raw graph evidence without receiving a precomputed answer or an answer-forcing schema. A separate server audit compares that assessment and customer claims with deterministic policy checks. Sage receives the audit and typed handoff; Echo drafts from verified conclusions. Mistaken research remains visible in history alongside its correction. This is a controlled reasoning workflow, not autonomous model-selected tool use. The server checks topic coverage, reviewed outcomes, citation IDs and revision consistency; those checks do not prove prose is correct. Replay is explicitly labelled and performs no inference.
+
+The reusable **Policy-verified reply** is assembled from the source-linked facts actually read and the saved case fields. Model wording remains separately visible for review; an incorrect sentence cannot become the downloadable policy reply merely by carrying correct assessment fields. Stale and superseded replies are rejected. This guarantees consistency with the supported typed policy rules, not real-world entitlement or source authenticity.
 
 ## The judge’s first minute
 
@@ -90,7 +91,7 @@ The live proof creates an isolated synthetic FalkorDB workspace and forces **loc
 
 October 16 verification: **56 tests passed, no failures or skips** against FalkorDB Cloud. **18/18 synthetic comparison fixtures passed**. The full in-memory traversal also passed: this comparison demonstrates dependency correctness, not unique database capability or superiority over competitors. Raw results: [comparison](docs/benchmark-results.json), [local inference proof](docs/live-proof.json).
 
-October 18: **56/56 tests and 18/18 comparison fixtures passed against a fresh real FalkorDB service in GitHub Actions**, with a clean frozen-lockfile install. [Public verification run](https://github.com/gggauransh/memory-airlock/actions/runs/39118219567). Independent research and visible correction were also tested with actual local inference using the local adapter; [fresh evidence](docs/local-proof-20261018.json). The existing Cloud instance's hostname no longer resolves, so restoring that particular local-demo connection remains pending; it is separate from the passing container verification. See [verification status](docs/VERIFICATION.md).
+October 18: **58/58 tests passed against FalkorDB Cloud**, including startup checks requiring the graph database and a hallucinated-prose regression. The real graph comparison passed **18/18 fixtures** again. Fresh [Cloud model proof](docs/cloud-proof-20261018.json) and [adversarial-prompt proof](docs/adversarial-proof-20261018.json) passed, including the verified reusable reply. The stopped Free instance was resumed; the earlier DNS failure is resolved. An [earlier clean GitHub run](https://github.com/gggauransh/memory-airlock/actions/runs/39118219567) passed the then-current 56 tests and 18 fixtures in a real FalkorDB container; [automated verification](https://github.com/gggauransh/memory-airlock/actions/workflows/verify.yml) runs on subsequent updates. Run `node --env-file-if-exists=.env src/verify-live.ts --adversarial` to reproduce the conflicting-instruction case with free local inference. See [full verification notes](docs/VERIFICATION.md).
 
 ## Scope and disclosure
 
