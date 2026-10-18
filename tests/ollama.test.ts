@@ -35,6 +35,7 @@ test('local SDK boundary performs three real HTTP generations after server-manda
     assert.equal(research.contexts[0].evidence[0].value, '30');
     const researchSchema = JSON.stringify(requests[0].body.response_format);
     assert.ok(researchSchema.includes('outside_window'), 'The research schema must permit a disagreement for the reviewer to detect.');
+    assert.ok(!researchSchema.includes('shipping'), 'A returns-only generation must not be offered unrelated assessment topics.');
     const review = JSON.parse(requests[1].body.messages.at(-1).content);
     assert.equal(review.contexts[0].handoff.summary, undefined, 'Unverified research prose must not contaminate the verified review.');
     assert.equal(review.contexts[0].handoff.assessments[0].outcome, 'outside_window');
