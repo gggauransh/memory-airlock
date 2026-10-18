@@ -13,7 +13,7 @@ test('local SDK boundary performs three real HTTP generations after server-manda
     const context = JSON.parse(body.messages.at(-1).content);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ id: 'local-contract', object: 'chat.completion', model: 'contract-model', created: 1,
-      choices: [{ index: 0, finish_reason: 'stop', message: { role: 'assistant', content: JSON.stringify({ summary: 'This purchase is within the verified current 30-day standard window.', citations: context.requiredCitationIds, assessments: context.requiredAssessments }) } }],
+      choices: [{ index: 0, finish_reason: 'stop', message: { role: 'assistant', content: JSON.stringify({ summary: requests.length === 1 ? 'The researcher incorrectly concludes this purchase is outside the window.' : 'This purchase is within the verified current 30-day standard window.', citations: context.requiredCitationIds, assessments: requests.length === 1 ? [{topic:'returns',outcome:'outside_window'}] : context.requiredAssessments }) } }],
       usage: { prompt_tokens: 10, completion_tokens: 20, total_tokens: 30 } }));
   });
   await new Promise<void>(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -26,6 +26,18 @@ test('local SDK boundary performs three real HTTP generations after server-manda
     assert.equal(requests.length, 3); assert.equal(r.run.orchestration, 'server-evidence');
     assert.equal(r.run.inputTokens, 30); assert.equal(r.run.outputTokens, 60);
     assert.equal(r.run.traces.length, 3); assert.deepEqual(r.decisions[0].factIds, ['fact-refund']);
+    assert.equal(r.decisions[0].assessments![0].outcome, 'outside_window');
+    assert.equal(r.decisions[1].assessments![0].outcome, 'within_window');
+    assert.match(r.decisions[1].corrections!.join(' '), /Research conclusion/);
+    const research = JSON.parse(requests[0].body.messages.at(-1).content);
+    assert.equal(research.requiredAssessments, undefined, 'Research must derive its own outcome, not receive the answer.');
+    assert.equal(research.contexts[0].checks, undefined, 'Evidence reads must not leak precomputed answers.');
+    assert.equal(research.contexts[0].evidence[0].value, '30');
+    const researchSchema = JSON.stringify(requests[0].body.response_format);
+    assert.ok(researchSchema.includes('outside_window'), 'The research schema must permit a disagreement for the reviewer to detect.');
+    const review = JSON.parse(requests[1].body.messages.at(-1).content);
+    assert.equal(review.contexts[0].handoff.summary, undefined, 'Unverified research prose must not contaminate the verified review.');
+    assert.equal(review.contexts[0].handoff.assessments[0].outcome, 'outside_window');
     for (const { body, authorization } of requests) {
       assert.equal(body.model, 'contract-model'); assert.equal(authorization, undefined);
       assert.equal(body.tools, undefined); assert.equal(body.reasoning_effort, 'none');
